@@ -10,13 +10,8 @@
 
 	<modules>
 		<module>core</module>
-		<module>switzerland</module>
+		<module>madrid</module>
 		<module>ile_de_france</module>
-		<module>sao_paulo</module>
-		<module>examples</module>
-		<module>san_francisco</module>
-		<module>los_angeles</module>
-		<module>vdf</module>
 	</modules>
 
 	<properties>
@@ -124,7 +119,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.2.2</version>
 				<executions>
 					<execution>
 						<goals>

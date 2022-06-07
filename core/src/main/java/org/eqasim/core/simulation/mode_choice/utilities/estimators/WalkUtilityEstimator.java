@@ -27,9 +27,24 @@ public class WalkUtilityEstimator implements UtilityEstimator {
 	}
 
 	protected double estimateTravelTimeUtility(WalkVariables variables) {
+		//return parameters.walk.betaTravelTime_u_min * Math.exp(variables.travelTime_min);
 		return parameters.walk.betaTravelTime_u_min * variables.travelTime_min;
 	}
 
+	protected double estimateDummyTimeUtility(WalkVariables variables) {
+
+		if (variables.travelTime_min > 10) {
+			return parameters.walk.betaExpTime_u_min * Math.exp(variables.travelTime_min/120);
+		}
+		else {
+			return parameters.walk.betaExpTime_u_min * 0;
+		}
+	}
+
+	protected double estimateTravelTimeSquaredUtility(WalkVariables variables) {
+		return parameters.walk.betaTravelTime2_u_min * variables.travelTime_min* variables.travelTime_min;
+	}
+	
 	@Override
 	public double estimateUtility(Person person, DiscreteModeChoiceTrip trip, List<? extends PlanElement> elements) {
 		WalkVariables variables = predictor.predictVariables(person, trip, elements);
@@ -38,7 +53,10 @@ public class WalkUtilityEstimator implements UtilityEstimator {
 
 		utility += estimateConstantUtility();
 		utility += estimateTravelTimeUtility(variables);
+		utility += estimateTravelTimeSquaredUtility(variables);
+		utility += estimateDummyTimeUtility(variables);
 
+		
 		return utility;
 	}
 }

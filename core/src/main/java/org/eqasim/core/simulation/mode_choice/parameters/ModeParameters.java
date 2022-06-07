@@ -28,6 +28,9 @@ public class ModeParameters implements ParameterDefinition {
 	public class WalkParameters {
 		public double alpha_u = 0.0;
 		public double betaTravelTime_u_min = 0.0;
+		public double betaTravelTime2_u_min = 0.0;
+		public double betaExpTime_u_min = 0.0;
+
 	}
 
 	public double lambdaCostEuclideanDistance = 0.0;

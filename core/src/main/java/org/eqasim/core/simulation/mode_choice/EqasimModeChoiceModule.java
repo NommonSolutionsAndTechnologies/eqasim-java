@@ -7,6 +7,11 @@ import java.util.Map;
 import org.eqasim.core.components.config.EqasimConfigGroup;
 import org.eqasim.core.simulation.mode_choice.constraints.EqasimVehicleTourConstraint;
 import org.eqasim.core.simulation.mode_choice.constraints.OutsideConstraint;
+import org.eqasim.core.simulation.mode_choice.constraints.OutsideConstraint_train1;
+import org.eqasim.core.simulation.mode_choice.constraints.OutsideConstraint_train2;
+import org.eqasim.core.simulation.mode_choice.constraints.OutsideConstraint_air;
+
+
 import org.eqasim.core.simulation.mode_choice.constraints.PassengerConstraint;
 import org.eqasim.core.simulation.mode_choice.cost.CostModel;
 import org.eqasim.core.simulation.mode_choice.cost.ZeroCostModel;
@@ -39,6 +44,10 @@ import com.google.inject.name.Named;
 public class EqasimModeChoiceModule extends AbstractEqasimExtension {
 	public static final String PASSENGER_CONSTRAINT_NAME = "PassengerConstraint";
 	public static final String OUTSIDE_CONSTRAINT_NAME = "OutsideConstraint";
+	public static final String OUTSIDE_CONSTRAINT_TRAIN1 = "OutsideConstraint_train1";
+	public static final String OUTSIDE_CONSTRAINT_TRAIN2 = "OutsideConstraint_train2";
+	public static final String OUTSIDE_CONSTRAINT_AIR = "OutsideConstraint_air";
+
 
 	public static final String TOUR_LENGTH_FILTER_NAME = "TourLengthFilter";
 	public static final String OUTSIDE_FILTER_NAME = "OutsideFilter";
@@ -60,7 +69,10 @@ public class EqasimModeChoiceModule extends AbstractEqasimExtension {
 	protected void installEqasimExtension() {
 		bindTripConstraintFactory(PASSENGER_CONSTRAINT_NAME).to(PassengerConstraint.Factory.class);
 		bindTripConstraintFactory(OUTSIDE_CONSTRAINT_NAME).to(OutsideConstraint.Factory.class);
-
+		bindTripConstraintFactory(OUTSIDE_CONSTRAINT_TRAIN1).to(OutsideConstraint_train1.Factory.class);
+		bindTripConstraintFactory(OUTSIDE_CONSTRAINT_TRAIN2).to(OutsideConstraint_train2.Factory.class);
+		bindTripConstraintFactory(OUTSIDE_CONSTRAINT_AIR).to(OutsideConstraint_air.Factory.class);
+		
 		bindTourFilter(TOUR_LENGTH_FILTER_NAME).to(TourLengthFilter.class);
 		bindTourFilter(OUTSIDE_FILTER_NAME).to(OutsideFilter.class);
 

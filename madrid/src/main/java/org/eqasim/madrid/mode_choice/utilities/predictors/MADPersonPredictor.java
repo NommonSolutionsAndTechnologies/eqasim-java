@@ -8,11 +8,12 @@ import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.contribs.discrete_mode_choice.model.DiscreteModeChoiceTrip;
 
+
 public class MADPersonPredictor extends CachedVariablePredictor<MADPersonVariables> {
-	@Override
-	protected MADPersonVariables predict(Person person, DiscreteModeChoiceTrip trip,
-			List<? extends PlanElement> elements) {
-		boolean hasSubscription = MADPredictorUtils.hasSubscription(person);
-		return new MADPersonVariables(hasSubscription);
+@Override
+protected MADPersonVariables predict(Person person, DiscreteModeChoiceTrip trip,
+		List<? extends PlanElement> elements) {
+	boolean airportPassenger = MADPredictorUtils.airportPassenger(person);
+	return new MADPersonVariables(airportPassenger);
 	}
 }

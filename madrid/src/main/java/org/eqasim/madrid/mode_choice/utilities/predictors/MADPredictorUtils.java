@@ -4,9 +4,9 @@ import org.matsim.api.core.v01.population.Activity;
 import org.matsim.api.core.v01.population.Person;
 
 public class MADPredictorUtils {
-	static public boolean hasSubscription(Person person) {
-		Boolean hasSubscription = (Boolean) person.getAttributes().getAttribute("hasPtSubscription");
-		return hasSubscription != null && hasSubscription;
+	static public boolean airportPassenger(Person person) {
+		Boolean isAirportPassenger = (Boolean) person.getAttributes().getAttribute("airportPassenger");
+		return isAirportPassenger != null && isAirportPassenger;
 	}
 
 	static public boolean isUrbanArea(Activity activity) {

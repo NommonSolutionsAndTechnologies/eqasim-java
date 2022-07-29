@@ -25,7 +25,6 @@ public class OutsideConstraint extends AbstractTripConstraint {
 				return false;
 			}
 		}
-
 		return true;
 	}
 
